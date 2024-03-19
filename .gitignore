@@ -1,5 +1,8 @@
+*env
 .idea/
-*venv/
-*venv
+.vscode/
 *.pyc
-db.*
+__pycache__
+*.code-workspace
+*.db
+.DS_Store
