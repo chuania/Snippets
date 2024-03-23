@@ -8,7 +8,7 @@ class SnippetForm(ModelForm):
     class Meta:
         model = Snippet
         # Описываем поля, которые будем заполнять в форме
-        fields = ['name', 'lang', 'code', 'private']
+        fields = ["name", "lang", "code", "private"]
 
 
 class UserRegistrationForm(ModelForm):
@@ -37,4 +37,4 @@ class UserRegistrationForm(ModelForm):
 class CommentForm(ModelForm):
     class Meta:
         model = Comment
-        fields = ['text']
+        fields = ["text"]
