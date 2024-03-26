@@ -29,12 +29,10 @@ def add_snippet(request):
 
 
 # 127.0.0.1:8000/snippets/list?sort=name
-# нужно вывести все
-#
-#
-#
 def snippets_page(request):
-    snippets = Snippet.objects.all()
+    snippets = Snippet.objects.filter(private=False) | Snippet.objects.filter(
+        user=request.user.id
+    )
     languages = Language.objects.all()
     sort = request.GET.get("sort")
     lang = request.GET.get("lang")
@@ -53,7 +51,6 @@ def snippets_page(request):
         "users": users,
         "languages": languages,
     }
-
     return render(request, "pages/view_snippets.html", context)
 
 

@@ -65,6 +65,7 @@
                 </thead>
                 <tbody>
                     {% for snippet in snippets %}
+
                     <tr>
                         <td scope="row">{{ snippet.id }}</td>
                         <td>
@@ -78,19 +79,20 @@
                         <td>{{ snippet.lang }}</td>
                         <td>{{ snippet.user.username }}</td>
                         <td>{{ snippet.creation_date }}</td>
-                        <td>
+                        <td style="padding-left :35px;">
                             {% if snippet.private %}
                             <i class="fa-solid fa-lock"></i>
                             {% else %}
                             <i class="fa-solid fa-lock-open"></i>
                             {% endif %}
+                            {% endfor %}
                         </td>
+
                     </tr>
-                    {% endfor %}
                 </tbody>
             </table>
             <div align="right">
-                <i style="color: gray;">Всего сниппетов: 2</i>
+                <i style="color: gray;">Всего сниппетов:{{snippets.count}}</i>
             </div>
         </div>
     </div>
