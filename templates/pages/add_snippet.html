@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container">
+    {% if user.is_authenticated %}
     <div class="row">
         <div class="col">
             <h2>{{ pagename }}</h2>
@@ -31,4 +32,8 @@
         </div>
     </div>
 </div>
+{% else %}
+<p>Функция доступна только авторизированным позователям</p>
+
+{% endif %}
 {% endblock %}

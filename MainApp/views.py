@@ -36,10 +36,13 @@ def snippets_page(request):
     languages = Language.objects.all()
     sort = request.GET.get("sort")
     lang = request.GET.get("lang")
+    user = request.GET.get("user")
     if sort:
         snippets = snippets.order_by(sort)
     if lang:
         snippets = snippets.filter(lang=lang)
+    if user:
+        snippets = snippets.filter(user=user)
     users = User.objects.annotate(num_snippets=Count("snippets")).exclude(
         num_snippets=0
     )
