@@ -34,7 +34,7 @@
             {% if request.user.is_authenticated %}
             <span style="color:white">
                 Welcome, {{ request.user.username }}
-                <a href="{% url 'logout' %}">logout</a>
+                <a href="{% url 'logout' %}">Выйти</a>
             </span>
             {% else %}
             <form method="post" action="{% url 'login' %}">{% csrf_token %}
