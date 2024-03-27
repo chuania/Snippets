@@ -1,64 +1,61 @@
 {% extends 'base.html' %}
 {% block content %}
-    <!-- Begin page content -->
-    <div class="container">
-        <div class="row">
-            <div class="col text-center">
-                <h1>{{ pagename }}</h1>
-                <hr>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h2>{{ pagename }}</h2>
+            <hr>
         </div>
-        <div class="row">
-            <div class="col">
-
-                <fieldset disabled>
-                    <div class="row disabled">
-                        <div class="col col-8">
-                            Название: <input type="text" value="{{ snippet.name }}" class="form-control">
-                        </div>
-                        <div class="col col-4">
-                            Дата создания:<input type="text" value="{{ snippet.creation_date }}" class="form-control">
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col">
-                            <div class="p-2 h-100" style="border:1px solid #ced4da; border-radius:5px;">
-                                <p>
-                                    {{ snippet.code }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </fieldset>
-            </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table>
+                <tr>
+                    <td> Название </td>
+                    <td><input type="text" value="{{ snippet.name }}" class="form-control"> </td>
+                </tr>
+                <tr>
+                    <td>Дата создания</td>
+                    <td><input type="text" value="{{ snippet.creation_date }}" class="form-control"></td>
+                </tr>
+            </table>
         </div>
-        <div class="row">
-            <div class="col">
-                <table border="1">
-                    <tr>
-                        <th>Автор</th>
-                        <th>Текст</th>
-                    </tr>
-                    {% for comment in snippet.comments.all %}
-                        <tr>
-                            <td>{{ comment.author }}</td>
-                            <td>{{ comment.text }}</td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <form action="{% url 'comment-create' %}" method="post">
-                    {% csrf_token %}
-                    {{ comment_form }}
-                    <input name="snippet_id" type="hidden" value="{{ snippet.id }}">
-                    <br>
-                    <button type="submit">Комментировать</button>
-                </form>
+    </div>
+    <div class="row">
+        <div class="col" style=" padding-top: 10px; padding-bottom: 10px;">
+            <div class=" w-50 p-2 h-100" style="border:1px solid #ced4da; border-radius:5px;">
+                <p>
+                    {{ snippet.code }}
+                </p>
             </div>
         </div>
     </div>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <table>
+                <tr>
+                    <th>Комментарии</th>
+                </tr>
+                {% for comment in snippet.comments.all %}
+                <tr>
+                    <td>{{ comment.author }}</td>
+                    <td>{{ comment.text }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col" style="padding-bottom: 10px;">
+            <form action="{% url 'comment-create' %}" method="post">
+                {% csrf_token %}
+                {{ comment_form.text }}
+                <input name="snippet_id" type="hidden" value="{{ snippet.id }}">
+                <br>
+                <button type="submit" class="btn btn-info">Оставить комментарий</button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
