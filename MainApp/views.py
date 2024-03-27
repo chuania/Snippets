@@ -10,8 +10,26 @@ from MainApp.forms import SnippetForm, UserRegistrationForm, CommentForm
 
 
 def index_page(request):
-    context = {"pagename": "PythonBin"}
+    id = request.GET.get("id")
+    if id:
+        snippet = Snippet.objects.get(id=id)
+        context = {
+            "pagename": "PythonBin",
+            "snippet": snippet,
+        }
+        return render(request, "pages/index.html", context)
+
+    else:
+
+        context = {
+            "pagename": "PythonBin",
+        }
     return render(request, "pages/index.html", context)
+
+
+# if request.method == "GET":  # получить страницу с формой
+#     context = {"pagename": "PythonBin"}
+#     return render(request, "pages/index.html", context)
 
 
 def add_snippet(request):

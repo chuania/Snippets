@@ -29,17 +29,32 @@
             <hr>
             <h5>Найти сниппет по номеру</h5>
             <p></p>
-            <form action='' id="view_snippet_form">
+            <form action='' method="get">
                 <div class="form-group row">
                     <label for="snippet_id" class="col-sm-2 col-form-label col-form-label">Номер:</label>
                     <div class="col-sm-8">
-                        <input type="number" class="form-control " id="snippet_id" placeholder="введите число">
+                        <input name="id" type="number" class="form-control " id="snippet_id"
+                            placeholder="введите число">
                     </div>
                     <div class="col-sm-2">
-                        <input type="submit" class="form-control btn btn-info" value="Найти">
+                        <button type="submit" class="form-control btn btn-info">Найти</button>
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table>
+                <tr>
+                    <td scope="row">{{ snippet.id }}</td>
+                    <td>{{ snippet.name }}</td>
+                    <td>{{ snippet.lang }}</td>
+                    <td>{{ snippet.user.username }}</td>
+                    <td>{{ snippet.creation_date }}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
