@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col">
             <p>Добро пожаловать, уважаемый пользователь!
-            <p>На этом сайте ты сможешь сохранить свои заготовки кода на различных языках программирования<br>
+            <p>На этом сайте ты сможешь сохранить свои заготовки кода на различных языках программирования.<br>
                 А также делиться ими с другими пользователями.
                 <hr>
         </div>
@@ -48,6 +48,7 @@
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
+                        <th scope="col"> ID</th>
                         <th scope="col"> Название</th>
                         <th scope="col">Язык</th>
                         <th scope="col">Автор</th>
@@ -56,7 +57,8 @@
                 </thead>
                 <tbody>
                     <tr>
-                        {% if not snippet.private or snippet.user == request.user.id %}
+                        {% if not snippet.private or snippet.user.id == request.user.id %}
+                        <td scope="row">{{ snippet.id}}</td>
                         <td scope="row">{{ snippet.name}}</td>
                         <td scope="row">{{ snippet.lang}}</td>
                         <td scope="row">{{ snippet.user.username}}</td>

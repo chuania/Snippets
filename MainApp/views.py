@@ -1,4 +1,4 @@
-from django.http import Http404
+from django.http import Http404, HttpResponseNotFound
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Count
@@ -110,8 +110,7 @@ def login_page(request):
         if user is not None:
             auth.login(request, user)
         else:
-            # Return error message
-            pass
+            return HttpResponseNotFound("<h2>User not found</h2>", status=404)
     return redirect("home")
 
 
