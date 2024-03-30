@@ -45,14 +45,26 @@
     </div>
     <div class="row">
         <div class="col">
-            <table>
-                <tr>
-                    <td scope="row">{{ snippet.id }}</td>
-                    <td>{{ snippet.name }}</td>
-                    <td>{{ snippet.lang }}</td>
-                    <td>{{ snippet.user.username }}</td>
-                    <td>{{ snippet.creation_date }}</td>
-                </tr>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col"> Название</th>
+                        <th scope="col">Язык</th>
+                        <th scope="col">Автор</th>
+                        <th scope="col">Дата создания</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% if not snippet.private or snippet.user == request.user.id %}
+                        <td scope="row">{{ snippet.name}}</td>
+                        <td scope="row">{{ snippet.lang}}</td>
+                        <td scope="row">{{ snippet.user.username}}</td>
+                        <td scope="row">{{ snippet.creation_date}}</td>
+                        {% else %}
+                        <td scope="row">Нет доступа</td>
+                        {% endif%}
+                    </tr>
                 </tbody>
             </table>
         </div>

@@ -3,7 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Count
 from django.core.exceptions import PermissionDenied
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import auth
 from MainApp.models import Snippet, Language
 from MainApp.forms import SnippetForm, UserRegistrationForm, CommentForm
@@ -12,24 +13,24 @@ from MainApp.forms import SnippetForm, UserRegistrationForm, CommentForm
 def index_page(request):
     id = request.GET.get("id")
     if id:
-        snippet = Snippet.objects.get(id=id)
-        context = {
-            "pagename": "PythonBin",
-            "snippet": snippet,
-        }
-        return render(request, "pages/index.html", context)
-
+        try:
+            snippet = Snippet.objects.get(id=id)
+            # snippet = get_object_or_404(id=id)
+            context = {
+                "pagename": "PythonBin",
+                "snippet": snippet,
+            }
+            return render(request, "pages/index.html", context)
+        except ObjectDoesNotExist:
+            context = {
+                "pagename": "PythonBin",
+            }
+            return render(request, "pages/index.html", context)
     else:
-
         context = {
             "pagename": "PythonBin",
         }
     return render(request, "pages/index.html", context)
-
-
-# if request.method == "GET":  # получить страницу с формой
-#     context = {"pagename": "PythonBin"}
-#     return render(request, "pages/index.html", context)
 
 
 def add_snippet(request):
