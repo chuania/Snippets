@@ -76,9 +76,9 @@ def snippets_page(request):
     return render(request, "pages/view_snippets.html", context)
 
 
-def snippet_edit(requests, snippet_id):
+def snippet_edit_privacy(request, snippet_id):
     snippet = Snippet.objects.get(id=snippet_id)
-    if snippet.user != requests.user:
+    if snippet.user != request.user:
         raise PermissionDenied()
     else:
         if snippet.private:
@@ -86,6 +86,22 @@ def snippet_edit(requests, snippet_id):
         else:
             Snippet.objects.filter(id=snippet_id).update(private=True)
     return redirect("snippets-my")
+
+
+def snippet_edit(request, snippet_id):
+    snippet = get_object_or_404(Snippet, id=snippet_id)
+    if request.method == "POST":
+        form = SnippetForm(request.POST, instance=snippet)
+        if form.is_valid():
+            snippet = form.save(commit=False)
+            snippet.author = request.user
+            snippet.save()
+            return redirect("snippet-detail", snippet_id)
+    else:
+        form = SnippetForm(instance=snippet)
+
+    context = {"form": form, "pagename": "Редактирование сниппета"}
+    return render(request, "pages/add_snippet.html", context)
 
 
 @login_required
@@ -106,9 +122,9 @@ def snippet_detail(request, snippet_id):
     return render(request, "pages/snippet-detail.html", context)
 
 
-def snippet_delete(requests, snippet_id):
+def snippet_delete(request, snippet_id):
     snippet = Snippet.objects.get(id=snippet_id)
-    if snippet.user != requests.user:
+    if snippet.user != request.user:
         raise PermissionDenied()
     snippet.delete()
     return redirect("snippets-my")
