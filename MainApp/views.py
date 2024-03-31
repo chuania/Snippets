@@ -76,6 +76,18 @@ def snippets_page(request):
     return render(request, "pages/view_snippets.html", context)
 
 
+def snippet_edit(requests, snippet_id):
+    snippet = Snippet.objects.get(id=snippet_id)
+    if snippet.user != requests.user:
+        raise PermissionDenied()
+    else:
+        if snippet.private:
+            Snippet.objects.filter(id=snippet_id).update(private=False)
+        else:
+            Snippet.objects.filter(id=snippet_id).update(private=True)
+    return redirect("snippets-my")
+
+
 @login_required
 def snippets_my(request):
     my_snippets = Snippet.objects.filter(user=request.user)
@@ -99,7 +111,7 @@ def snippet_delete(requests, snippet_id):
     if snippet.user != requests.user:
         raise PermissionDenied()
     snippet.delete()
-    return redirect("snippets-list")
+    return redirect("snippets-my")
 
 
 def login_page(request):
