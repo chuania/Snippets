@@ -43,6 +43,9 @@
                 <tr>
                     <td>{{ comment.author }}</td>
                     <td>{{ comment.text }}</td>
+                    {% if comment.image %}
+                    <td><img style="width:40 px; height:40px;" src="{{ MEDIA_URL }}{{ comment.image }}"></td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
             </table>
@@ -50,9 +53,17 @@
     </div>
     <div class="row">
         <div class="col" style="padding-bottom: 10px;">
-            <form action="{% url 'comment-create' %}" method="post">
+            <form action="{% url 'comment-create' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ comment_form.text }}
+                <table>
+
+                    <tr>
+                        <td>{{ comment_form.text}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ comment_form.image}}</td>
+                    </tr>
+                </table>
                 <input name="snippet_id" type="hidden" value="{{ snippet.id }}">
                 <br>
                 <button type="submit" class="btn btn-info">Оставить комментарий</button>

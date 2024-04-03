@@ -16,6 +16,7 @@ class Comment(models.Model):
     snippet = models.ForeignKey(
         to="Snippet", on_delete=models.CASCADE, related_name="comments"
     )
+    image = models.ImageField(upload_to="images", null=True, blank=True)
 
 
 class Snippet(models.Model):

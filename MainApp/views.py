@@ -164,7 +164,7 @@ def registration(request):
 
 def comment_create(request):
     if request.method == "POST":
-        comment_form = CommentForm(request.POST)
+        comment_form = CommentForm(request.POST, request.FILES)
         snippet_id = request.POST.get("snippet_id")
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
