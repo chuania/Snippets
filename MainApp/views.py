@@ -8,7 +8,7 @@ from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.contrib import auth
 from MainApp.models import Snippet, Language
 from MainApp.forms import SnippetForm, UserRegistrationForm, CommentForm
-from django.template.defaultfilters import filesizeformat
+from django.contrib import messages
 
 
 def index_page(request):
@@ -138,9 +138,10 @@ def login_page(request):
         user = auth.authenticate(request, username=username, password=password)
         if user is not None:
             auth.login(request, user)
+            messages.success(request, "Login successful")
         else:
-            return HttpResponseNotFound("<h2>User not found</h2>", status=404)
-    return redirect("home")
+            messages.error(request, "User is not found")
+        return redirect("home")
 
 
 def logout_page(request):
