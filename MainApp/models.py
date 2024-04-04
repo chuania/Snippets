@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from MainApp.formatChecker import ContentTypeRestrictedFileField
 
 
 class Language(models.Model):
@@ -16,7 +17,13 @@ class Comment(models.Model):
     snippet = models.ForeignKey(
         to="Snippet", on_delete=models.CASCADE, related_name="comments"
     )
-    image = models.ImageField(upload_to="images", null=True, blank=True)
+    image = ContentTypeRestrictedFileField(
+        upload_to="images",
+        content_types=["image/jpeg", "image/png", "image/gif"],
+        max_upload_size=2621440,
+        blank=True,
+        null=True,
+    )
 
 
 class Snippet(models.Model):

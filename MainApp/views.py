@@ -4,10 +4,11 @@ from django.contrib.auth.models import User
 from django.db.models import Count
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import render, redirect, get_object_or_404
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.contrib import auth
 from MainApp.models import Snippet, Language
 from MainApp.forms import SnippetForm, UserRegistrationForm, CommentForm
+from django.template.defaultfilters import filesizeformat
 
 
 def index_page(request):
@@ -172,4 +173,6 @@ def comment_create(request):
             snippet = Snippet.objects.get(id=snippet_id)
             comment.snippet = snippet
             comment.save()
+        else:
+            raise ValidationError("Filetype not supported.")
         return redirect(request.META.get("HTTP_REFERER", "/"))
