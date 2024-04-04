@@ -174,5 +174,7 @@ def comment_create(request):
             comment.snippet = snippet
             comment.save()
         else:
-            raise ValidationError("Filetype not supported.")
+            raise ValidationError(
+                "Filetype not supported. Supported formats are png, jpeg, gif. The maximum size is 2.5MB."
+            )
         return redirect(request.META.get("HTTP_REFERER", "/"))
