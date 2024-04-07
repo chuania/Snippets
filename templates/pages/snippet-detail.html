@@ -51,6 +51,7 @@
             </table>
         </div>
     </div>
+    {% if user.is_authenticated %}
     <div class="row">
         <div class="col" style="padding-bottom: 10px;">
             <form action="{% url 'comment-create' %}" method="post" enctype="multipart/form-data">
@@ -70,5 +71,11 @@
             </form>
         </div>
     </div>
+    {% else %}
+    <p></p>
+
+    <h6>Оставлять комментарии могут только зарегистрированные пользователи</h6>
+
+    {% endif %}
 </div>
 {% endblock %}

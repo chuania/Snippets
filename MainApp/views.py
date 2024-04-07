@@ -164,6 +164,7 @@ def registration(request):
         return redirect("home")
 
 
+@login_required
 def comment_create(request):
     if request.method == "POST":
         comment_form = CommentForm(request.POST, request.FILES)

@@ -1,8 +1,1 @@
-install requirements: 
-`pip install -r requirements.txt`
-
-run project:
-`python manage.py runserver`
-
-run django-extensions console: 
-`python manage.py shell_plus --ipython`
+Проект "Snippet" - это сайт, реализовaнный посредством Django framework, где каждый зарегистрированный пользователь может оставлять фрагменты кода(сниппеты), изменять их, просматривать и комментировать код других пользователей. У сниппета два режима просмотра - публичный и приватный, публичные фрагменты доступны также незарегистрированным пользователям.
