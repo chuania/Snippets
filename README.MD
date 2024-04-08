@@ -13,15 +13,16 @@
 ## Вспомогательные команды
 1. Запуск python-shell с контекстом django: `python manage.py shell_plus --ipython`
 
-### Сайт следующий графический интерфейс:
+
+#### Сайт имеет следующий графический интерфейс:
 <p>
-  <img width="500" height="350" src="https://github.com/chuania/Snippets/blob/main/overview/screen1.png">
+  <img width="600" height="400" src="https://github.com/chuania/Snippets/blob/main/overview/screen1.png">
 </p>
 <p></p>
 <p>
-  <img width="500" height="350" src="https://github.com/chuania/Snippets/blob/main/overview/screen2.png">
+  <img width="600" height="400" src="https://github.com/chuania/Snippets/blob/main/overview/screen2.png">
 </p>
 <p></p>
 <p>
-  <img width="500" height="350" src="https://github.com/chuania/Snippets/blob/main/overview/screen3.png">
+  <img width="600" height="400" src="https://github.com/chuania/Snippets/blob/main/overview/screen3.png">
 </p>
