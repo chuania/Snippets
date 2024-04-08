@@ -15,13 +15,13 @@
 
 ### Сайт следующий графический интерфейс:
 <p>
-  <img width="500" height="350" src="https://github.com/chuania/Snippets/blob/main/overview/screen1">
+  <img width="500" height="350" src="https://github.com/chuania/Snippets/blob/main/overview/screen1.png">
 </p>
 <p></p>
 <p>
-  <img width="500" height="350" src="https://github.com/chuania/Snippets/blob/main/overview/screen2">
+  <img width="500" height="350" src="https://github.com/chuania/Snippets/blob/main/overview/screen2.png">
 </p>
 <p></p>
 <p>
-  <img width="500" height="350" src="https://github.com/chuania/Snippets/blob/main/overview/screen3">
+  <img width="500" height="350" src="https://github.com/chuania/Snippets/blob/main/overview/screen3.png">
 </p>
