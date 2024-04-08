@@ -10,7 +10,7 @@
 4. Создаем базу(применяя миграции): `python manage.py migrate`
 5. Запускаем проект командой: `python3 manage.py runserver`
 
-## Вспомогательные команды
+<!-- ## Вспомогательные команды
 1. Запуск python-shell с контекстом django: `python manage.py shell_plus --ipython`
 
 ### Сайт следующий графический интерфейс:
@@ -24,4 +24,4 @@
 <p></p>
 <p>
   <img width="500" height="350" src="https://github.com/chuania/Snippets/blob/main/overview/screen3">
-</p>
+</p> -->
