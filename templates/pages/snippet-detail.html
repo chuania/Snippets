@@ -12,9 +12,11 @@
             <table>
                 <tr>
                     <td> Название </td>
+                    {% if snippet.user == request.user %}
                     <td><input type="text" value="{{ snippet.name }}" class="form-control"> </td>
                     <td> <a class="btn btn-default" href="{% url 'snippet-edit' snippet.id %}"><i
                                 class="fa-solid fa-pen"></i></a></td>
+                    {% endif %}
                 </tr>
                 <tr>
                     <td>Дата создания</td>
