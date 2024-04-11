@@ -11,8 +11,10 @@
 5. Запускаем проект командой: `python3 manage.py runserver`
 
 ## Вспомогательные команды
-1. Запуск python-shell с контекстом django: `python manage.py shell_plus --ipython`
-2. Выход из venv: `deactivate`  
+1. Остановка сервера в терминале: Ctrl+C 
+2. Запуск python-shell с контекстом django: `python manage.py shell_plus --ipython`
+3. Выход из python-shell: Ctrl+D
+4. Выход из venv: `deactivate`  
 
 
 #### Сайт имеет следующий графический интерфейс:
