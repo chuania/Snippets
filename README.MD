@@ -12,6 +12,7 @@
 
 ## Вспомогательные команды
 1. Запуск python-shell с контекстом django: `python manage.py shell_plus --ipython`
+2. Выход из venv: `deactivate`  
 
 
 #### Сайт имеет следующий графический интерфейс:
